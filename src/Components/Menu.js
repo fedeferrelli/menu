@@ -135,7 +135,7 @@ else return
                {MostrarCategoria(dish.categoria, i)}
              </div>
 
-             <div className="w-full sm:w-full bg-gray-200 border-b rounded-sm flex flex-row sm:flex-col overflow-hidden box-border">
+             <div className="w-full sm:w-full bg-gray-200 border-b border-gray-300 rounded-sm flex flex-row sm:flex-col overflow-hidden box-border">
                <img
                  src={dish.image}
                  className="min-w-28 sm:w-40 h-28 sm:h-40 p-1 rounded-md  "
