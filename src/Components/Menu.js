@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import DetailedDish from '../utils/DetailedDish';
 
 /* import { useNavigate } from 'react-router'; */
 
@@ -17,6 +18,8 @@ function Menu() {
 
 const [datos, setDatos] = useState([])
 const [filtro, setFiltro] = useState('')
+const [verDetallePlato, setVerDetallePlato] = useState(false)
+const [detallePlato, setDetallePlato] = useState({})
 
 const [categoriasOrdenadas, setCategoriasOrdenadas] = useState([])
 
@@ -104,11 +107,31 @@ else return
     }
 }
 
+
+const irDetallePlato = (dish)=>{
+    
+    setDetallePlato(dish)
+
+    setVerDetallePlato(true)
+}
    
  
  return (
    <>
-     <div className="bg-gray-800 min-h-screen pb-20">
+
+{
+    verDetallePlato ? 
+    
+    <DetailedDish
+    dish={detallePlato}
+    setVerDetallePlato={setVerDetallePlato}
+    />
+
+    :
+
+     <div className="bg-gray-800 min-h-screen pb-20"
+     
+     >
        <h1 className="font-bold px-8 w-full text-center text-white text-xl py-6">
          {" "}
          Acá podés ver{" "}
@@ -135,7 +158,8 @@ else return
                {MostrarCategoria(dish.categoria, i)}
              </div>
 
-             <div className="w-full sm:w-full bg-gray-200 border-b border-gray-300 rounded-sm flex flex-row sm:flex-col overflow-hidden box-border">
+             <div className="w-full sm:w-full bg-gray-200 border-b border-gray-300 rounded-sm flex flex-row sm:flex-col overflow-hidden box-border"
+             onClick={() => irDetallePlato(dish)}>
                <img
                  src={dish.image}
                  className="min-w-28 sm:w-40 h-28 sm:h-40 p-1 rounded-md  "
@@ -200,6 +224,8 @@ else return
          </h1>
        </div>
      </div>
+
+}
    </>
  );
 }
