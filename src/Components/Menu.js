@@ -160,11 +160,13 @@ const irDetallePlato = (dish)=>{
 
              <div className="w-full sm:w-full bg-gray-200 border-b border-gray-300 rounded-sm flex flex-row sm:flex-col overflow-hidden box-border"
              onClick={() => irDetallePlato(dish)}>
+                 <div className="p-1 ">
+                 <div className="bg-no-repeat max-h-[112px]  overflow-hidden bg-center ">
                <img
                  src={dish.image}
-                 className="min-w-28 sm:w-40 h-28 sm:h-40 p-1 rounded-md  "
+                 className="w-44 rounded-sm -z-10  "
                  alt="plato_img"
-               />
+               /></div></div>
 
                <div className="w-3/4 sm:w-full h-full p-1">
                  <div className="text-xl text-gray-700 font-bold capitalize">
