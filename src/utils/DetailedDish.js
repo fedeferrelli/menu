@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function DetailedDish({ dish, setVerDetallePlato }) {
-  const { image, plato, descripcion, categoria, precio } = dish;
+  
+
+   const {image, plato, precio, descripcion} = dish
+
+
 
   return (
-    <div className="bg-gray-200 min-h-screen">
-      <div className="bg-no-repeat p-1 max-h-96 overflow-hidden bg-center">
+    <div className="bg-gray-200">
+<div className="bg-no-repeat max-h-96 overflow-hidden bg-center">
         <img src={image} className="w-full rounded-md  " alt="plato_img" />
       </div>
 
@@ -18,7 +22,7 @@ function DetailedDish({ dish, setVerDetallePlato }) {
         </div>
       </div>
 
-      <div className="w-full px-4 py-3 mb-12 flex flex-row justify-between items-center">
+      <div className="w-full px-4 py-3 pb-4 flex flex-row justify-between items-center">
         <div className="w-full text-lg  text-gray-500 text-center">
           {descripcion}
         </div>
@@ -28,16 +32,16 @@ function DetailedDish({ dish, setVerDetallePlato }) {
 
       <div
         onClick={() => setVerDetallePlato(false)}
-        className="w-full  h-12 text-center font-bold m-auto text-md bg-gray-800 text-yellow-500    flex"
+        className="w-full  h-full text-center font-bold m-auto  bg-gray-800 text-yellow-500    flex"
       >
-        <h1 className="m-auto text-left w-full pl-2"> Volver al menu</h1>
+        <h1 className="m-auto text-lg text-left w-full pl-2"> Volver al menu</h1>
       </div>
 
       <div
-        /* onClick={() => setVerDetallePlato(false)} */
-        className="w-full h-full text-center font-bold text-md bg-gray-800 text-yellow-500 flex"
+       /*  onClick={() => setVerDetallePlato(false)} */
+        className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
       >
-        <h1 className="m-auto text-right  w-full pr-2 "> Agregar al Pedido</h1>
+        <h1 className="m-auto text-right text-lg  w-full pr-2 "> Agregar al Pedido</h1>
       </div>
       </div>
     </div>

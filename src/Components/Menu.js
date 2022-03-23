@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import DetailedDish from '../utils/DetailedDish';
+import Order from '../utils/Order';
+import { useNavigate } from 'react-router';
 
 /* import { useNavigate } from 'react-router'; */
 
@@ -22,6 +24,8 @@ const [verDetallePlato, setVerDetallePlato] = useState(false)
 const [detallePlato, setDetallePlato] = useState({})
 
 const [categoriasOrdenadas, setCategoriasOrdenadas] = useState([])
+
+/* const navigate = useNavigate(); */
 
 
 // obtener datos de categorias
@@ -114,20 +118,25 @@ const irDetallePlato = (dish)=>{
 
     setVerDetallePlato(true)
 }
+
+
    
  
  return (
    <>
 
 {
-    verDetallePlato ? 
-    
+  verDetallePlato ? 
+    <>
     <DetailedDish
     dish={detallePlato}
     setVerDetallePlato={setVerDetallePlato}
     />
 
-    :
+    <Order dish={detallePlato}/>
+    </>
+
+    : 
 
      <div className="bg-gray-800 min-h-screen pb-20"
      
