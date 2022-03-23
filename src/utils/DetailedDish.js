@@ -24,7 +24,7 @@ function DetailedDish({ dish, setVerDetallePlato }) {
         </div>
       </div>
 
-      <div  className="w-full bg-gradient-to-t  h-12 fixed bottom-0 justify-center items-end text-gray-800 flex flex-row">
+      <div  className="w-full bg-gradient-to-t  h-16 fixed bottom-0 justify-center items-end text-gray-800 flex flex-row">
 
       <div
         onClick={() => setVerDetallePlato(false)}
