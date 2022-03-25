@@ -15,7 +15,7 @@ import _ from "lodash";
 /* import {Fade} from 'react-awesome-reveal' */
 
 
-function Menu() {
+function Menu({pedido, setPedido}) {
 
 
 const [datos, setDatos] = useState([])
@@ -131,6 +131,8 @@ const irDetallePlato = (dish)=>{
     <DetailedDish
     dish={detallePlato}
     setVerDetallePlato={setVerDetallePlato}
+    pedido={pedido} 
+    setPedido={setPedido}
     />
 
     <Order dish={detallePlato}/>

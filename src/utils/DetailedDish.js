@@ -1,16 +1,26 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 
-function DetailedDish({ dish, setVerDetallePlato }) {
+import {useNavigate} from 'react-router-dom'
+
+function DetailedDish({ dish, setVerDetallePlato, pedido, setPedido }) {
   
 
    const {image, plato, precio, descripcion} = dish
 
+  const [platos, setPlatos] = useState([])
 
+const navigate= useNavigate();
+
+const AgregarPedido = () =>{
+
+setPedido([...pedido, dish])
+navigate('/pedido')
+}
 
   return (
     <div className="bg-gray-200">
 <div className="bg-no-repeat max-h-96 overflow-hidden bg-center">
-        <img src={image} className="w-full rounded-md  " alt="plato_img" />
+        <img src={image} className="w-full" alt="plato_img" />
       </div>
 
       <div className="w-full px-1 py-3 flex flex-col justify-between items-center">
@@ -38,7 +48,7 @@ function DetailedDish({ dish, setVerDetallePlato }) {
       </div>
 
       <div
-       /*  onClick={() => setVerDetallePlato(false)} */
+       onClick={()=>AgregarPedido()}
         className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
       >
         <h1 className="m-auto text-right text-lg  w-full pr-2 "> Agregar al Pedido</h1>
