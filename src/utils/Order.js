@@ -5,7 +5,6 @@ import { MdAdd, MdRemove } from "react-icons/md";
 function Order({ dish, cantidad, setCantidad }) {
   const { precio } = dish;
 
-  /* const [cantidad, setCantidad] = useState(1); */
   const [montoTotal, setMontoTotal] = useState(precio);
 
   const agregarCantidad = () => {
@@ -23,13 +22,12 @@ function Order({ dish, cantidad, setCantidad }) {
   };
 
   return (
-    <div className="w-full pb-24 bg-gray-200 ">
+    <div className="w-full pb-4 bg-gray-200 ">
       <div className="text-xl w-full text-center font-bold text-gray-700 mb-4">
         Cantidades
       </div>
       <div className="flex flex-row justify-center items-center w-full">
-
-      <button
+        <button
           className="text-4xl bg-yellow-500 text-gray-800 rounded-full"
           onClick={() => quitarCantidad()}
         >
@@ -46,8 +44,6 @@ function Order({ dish, cantidad, setCantidad }) {
         >
           <MdAdd />
         </button>
-
-
       </div>
 
       <h1 className="text-lg text-center w-fulltext-gray-700">
