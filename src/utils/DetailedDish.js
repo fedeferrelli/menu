@@ -1,25 +1,77 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
+import Order from "./Order";
 
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 function DetailedDish({ dish, setVerDetallePlato, pedido, setPedido }) {
   
+console.log(dish)
 
-   const {image, plato, precio, descripcion} = dish
+  const [detallePlato, setDetallePlato] = useState(null);
+  const [platos, setPlatos] = useState([]);
 
-  const [platos, setPlatos] = useState([])
+  const [pedidoList, setPedidoList] = useState([])
 
-const navigate= useNavigate();
+  const [cantidad, setCantidad] = useState(1);
 
-const AgregarPedido = () =>{
+  const navigate = useNavigate();
+  console.log(dish)
 
-setPedido([...pedido, dish])
-navigate('/pedido')
+  useEffect(() => {
+    
+    const getData = async()=>{
+
+        const platoDatail = await JSON.parse(sessionStorage.getItem("dish"));    
+        setDetallePlato(platoDatail)
+          
+
 }
 
+getData();
+
+  }, []);
+
+      
+    const { image, plato, precio, descripcion } = detallePlato || ''
+  
+  const AgregarPedido = () => {
+
+    detallePlato.cantidad=cantidad;
+       
+    if (sessionStorage.pedido2 === undefined){
+        sessionStorage.setItem('pedido2', JSON.stringify([detallePlato]));
+        /* setTrigger(!trigger) */
+     }
+
+    else{
+
+
+     var dwld= JSON.parse(sessionStorage.getItem('pedido2'))
+     console.log('dwld', dwld)
+     
+     const array =[...dwld, ...[detallePlato]]
+     console.log(array)
+
+     /*var i = array.length
+     console.log(i);
+
+     array[i] = dish
+     console.log(array)*/
+
+     sessionStorage.setItem('pedido2', JSON.stringify(array)) 
+     /* setTrigger(!trigger) */
+     
+ }
+
+navigate('/pedido')
+};
+
   return (
+
+    <>
+    { detallePlato &&
     <div className="bg-gray-200">
-<div className="bg-no-repeat max-h-96 overflow-hidden bg-center">
+      <div className="bg-no-repeat max-h-96 overflow-hidden bg-center">
         <img src={image} className="w-full" alt="plato_img" />
       </div>
 
@@ -38,23 +90,38 @@ navigate('/pedido')
         </div>
       </div>
 
-      <div  className="w-full bg-gradient-to-t  h-16 fixed bottom-0 justify-center items-end text-gray-800 flex flex-row">
+      <Order 
+      dish={detallePlato}
+      cantidad={cantidad} 
+      setCantidad={setCantidad}
+      />
 
-      <div
-        onClick={() => setVerDetallePlato(false)}
-        className="w-full  h-full text-center font-bold m-auto  bg-gray-800 text-yellow-500    flex"
-      >
-        <h1 className="m-auto text-lg text-left w-full pl-2"> Volver al menu</h1>
-      </div>
+      <div className="w-full bg-gradient-to-t  h-16 fixed bottom-0 justify-center items-end text-gray-800 flex flex-row">
+        <div
+          onClick={() => navigate('/')}
+          className="w-full  h-full text-center font-bold m-auto  bg-gray-800 text-yellow-500    flex"
+        >
+          <h1 className="m-auto text-lg text-left w-full pl-2">
+            {" "}
+            Volver al menu
+          </h1>
+        </div>
 
-      <div
-       onClick={()=>AgregarPedido()}
-        className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
-      >
-        <h1 className="m-auto text-right text-lg  w-full pr-2 "> Agregar al Pedido</h1>
-      </div>
+      
+
+        <div
+          onClick={() => AgregarPedido()}
+          className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
+        >
+          <h1 className="m-auto text-right text-lg  w-full pr-2 ">
+            {" "}
+            Agregar al Pedido
+          </h1>
+        </div>
       </div>
     </div>
+}
+    </>
   );
 }
 

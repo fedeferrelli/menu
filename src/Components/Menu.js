@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import DetailedDish from '../utils/DetailedDish';
-import Order from '../utils/Order';
+/* import DetailedDish from '../utils/DetailedDish'; */
+/* import Order from '../utils/Order'; */
 import { useNavigate } from 'react-router';
-
-/* import { useNavigate } from 'react-router'; */
 
 import firebase from '../utils/Firebase/firebaseConfig';
 
@@ -17,6 +15,7 @@ import _ from "lodash";
 
 function Menu({pedido, setPedido}) {
 
+/* sessionStorage.clear() */
 
 const [datos, setDatos] = useState([])
 const [filtro, setFiltro] = useState('')
@@ -24,8 +23,28 @@ const [verDetallePlato, setVerDetallePlato] = useState(false)
 const [detallePlato, setDetallePlato] = useState({})
 
 const [categoriasOrdenadas, setCategoriasOrdenadas] = useState([])
+const [cantidadPlatos, setCantidadPlatos] = useState()
+const navigate = useNavigate();
 
-/* const navigate = useNavigate(); */
+// obtener cantidad de platos en el pedido
+
+useEffect(() => {
+
+    const getCantidad = async()=>{
+
+        
+
+        const storagedData = await JSON.parse(sessionStorage.getItem("pedido2"));
+        
+        storagedData !== null ? setCantidadPlatos(storagedData.reduce(function (previousValue, currentValue) {
+            return previousValue + Number(currentValue.cantidad);
+          }, 0)) : setCantidadPlatos(0)
+       
+}
+
+getCantidad();
+     
+ }, []);
 
 
 // obtener datos de categorias
@@ -114,9 +133,8 @@ else return
 
 const irDetallePlato = (dish)=>{
     
-    setDetallePlato(dish)
-
-    setVerDetallePlato(true)
+    sessionStorage.setItem('dish', JSON.stringify(dish));
+   navigate('/detailedDish')
 }
 
 
@@ -126,7 +144,7 @@ const irDetallePlato = (dish)=>{
    <>
 
 {
-  verDetallePlato ? 
+/*   verDetallePlato ? 
     <>
     <DetailedDish
     dish={detallePlato}
@@ -136,9 +154,9 @@ const irDetallePlato = (dish)=>{
     />
 
     <Order dish={detallePlato}/>
-    </>
+    </> 
 
-    : 
+    : */ 
 
      <div className="bg-gray-800 min-h-screen pb-20"
      
@@ -228,14 +246,22 @@ const irDetallePlato = (dish)=>{
     onClick={()=>navigate('/addDish')}
     ><AiOutlinePlus/></h1></div> */}
 
-       <div className="w-32 h-14 rounded-xl bg-yellow-500 fixed bottom-3 right-3 flex justify-center shadow-sm px-4 shadow-gray-500">
-         <h1
-           className="m-auto text-white text-lg text-center  align-middle"
-           /* onClick={()=>navigate('/categories')} */
-         >
-           Ver Orden
-         </h1>
-       </div>
+
+       
+       <div className="w-full bg-gradient-to-t  h-16 fixed bottom-0 justify-center items-end text-gray-800 flex flex-row">
+        <div
+         onClick={() => navigate('/pedido')}
+          className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
+        >
+          <h1 className="m-auto text-right text-lg  w-full pr-2 ">
+            {" "}
+            Ver Pedido ( {cantidadPlatos})
+          </h1>
+        </div>
+        </div>
+
+
+
      </div>
 
 }
