@@ -5,7 +5,7 @@ import { MdAdd, MdRemove } from "react-icons/md";
 function Order({ dish, cantidad, setCantidad }) {
   const { precio } = dish;
 
-  const [montoTotal, setMontoTotal] = useState(precio);
+  const [montoTotal, setMontoTotal] = useState(Number(precio));
 
   const agregarCantidad = () => {
     setCantidad(cantidad + 1);
@@ -23,30 +23,30 @@ function Order({ dish, cantidad, setCantidad }) {
 
   return (
     <div className="w-full pb-4 bg-gray-200 ">
-      <div className="text-xl w-full text-center font-bold text-gray-700 mb-4">
+      {/* <div className="text-xl w-full text-center font-bold text-gray-700 mb-4">
         Cantidades
-      </div>
+      </div> */}
       <div className="flex flex-row justify-center items-center w-full">
         <button
-          className="text-4xl bg-yellow-500 text-gray-800 rounded-full"
+          className="text-4xl bg-yellow-500 text-gray-800 rounded-l-full"
           onClick={() => quitarCantidad()}
         >
           <MdRemove />
         </button>
 
-        <div className="text-3xl text-center mx-2 bg-gray-100 w-1/4 text-gray-800 rounded-md">
+        <div className="text-3xl text-center mx-1 bg-gray-100 w-1/4 text-gray-800 rounded-sm">
           {cantidad}
         </div>
 
         <button
-          className="text-4xl bg-yellow-500 text-gray-800 rounded-full"
+          className="text-4xl bg-yellow-500 text-gray-800 rounded-r-full"
           onClick={() => agregarCantidad()}
         >
           <MdAdd />
         </button>
       </div>
 
-      <h1 className="text-lg text-center w-fulltext-gray-700">
+      <h1 className="text-lg text-center w-full text-gray-700">
         Total: ${montoTotal.toLocaleString("de-DE")}
       </h1>
     </div>

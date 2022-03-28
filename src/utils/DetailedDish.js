@@ -49,9 +49,9 @@ function DetailedDish() {
             <div className="w-full text-3xl font-bold text-gray-600 capitalize text-center">
               {plato}
             </div>
-            <div className="w-full text-xl text-center font-bold text-gray-600">
+           {/*  <div className="w-full text-xl text-center font-bold text-gray-600">
               ${precio}
-            </div>
+            </div> */}
           </div>
 
           <Order
