@@ -82,7 +82,7 @@ function Pedido() {
           </h1>
           {pedido.map((dish) => (
             <div key={Math.random()} className="w-full px-2  sm:w-1/5">
-              <div className="w-full sm:w-full bg-gray-100 border-b border-gray-300 flex flex-row sm:flex-col overflow-hidden box-border">
+              <div className="w-full py-2 bg-gray-100 border-b border-gray-300 flex flex-row sm:flex-col overflow-hidden box-border">
                 <div className="w-3/4 sm:w-full h-full p-1">
                   <div className="text-xl text-gray-700 font-bold capitalize">
                     {dish.plato}{" "}
@@ -104,7 +104,7 @@ function Pedido() {
 <div className=" mx-2   ">
           <div className="w-full box-border mt-1 bg-gray-300 border-b border-gray-300 flex flex-row ">
             <div className="w-1/2 sm:w-full h-full p-1 ">
-              <div className="text-xl text-gray-700 font-bold capitalize">
+              <div className="text-xl py-1 text-gray-700 font-bold capitalize">
                 Total <span className="text-sm italic lowercase text-gray-700"> ({totalItems} items) </span> 
               </div>
             </div>
