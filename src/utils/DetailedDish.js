@@ -41,7 +41,7 @@ function DetailedDish() {
     <>
       {detallePlato && (
         <div className="bg-gray-200 min-h-screen">
-          <div className="bg-no-repeat max-h-96 overflow-hidden bg-center">
+          <div className="bg-no-repeat max-h-96 overflow-hidden bg-center sticky top-0">
             <img src={image} className="w-full" alt="plato_img" />
           </div>
 
