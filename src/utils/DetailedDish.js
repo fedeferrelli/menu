@@ -66,9 +66,9 @@ function DetailedDish() {
             </div>
           </div>
 
+<div className="w-full h-6 fixed bottom-16 bg-gradient-to-t from-gray-200"></div>
 
-
-          <div className="w-full bg-gradient-to-t  h-16 fixed bottom-0 justify-center items-end text-gray-800 flex flex-row">
+          <div className="w-full h-16 fixed bottom-0 justify-center flex flex-row">
             <div
               onClick={() => navigate("/")}
               className="w-full  h-full text-center font-bold m-auto  bg-gray-800 text-yellow-500    flex"
