@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function Pedido() {
   const [pedido, setPedido] = useState();
   const [total, setTotal] = useState("");
+  const [totalItems, setTotalItems] = useState("");
   const [trigger, setTrigger] = useState(true);
 
   useEffect(() => {
@@ -22,6 +23,20 @@ function Pedido() {
         },
         0);
         setTotal(total);
+
+        const totalItems = storagedData.reduce(function (
+          previousValue,
+          currentValue
+        ) {
+          return (
+            previousValue +
+            Number(currentValue.cantidad)
+          );
+        },
+        0);
+        setTotalItems(totalItems);
+
+
       }
 
       setPedido(storagedData);
@@ -79,8 +94,8 @@ function Pedido() {
                 </div>
 
                 <div className=" h-full w-1/4 sm:w-full  p-1 flex flex-col justify-between items-center">
-                  <div className="text-xl font-bold text-gray-700">
-                    ${dish.precio * dish.cantidad}
+                  <div className="text-xl font-bold text-gray-700 w-full text-right">
+                    ${Number(dish.precio * dish.cantidad).toLocaleString("de-DE")}
                   </div>
                 </div>
               </div>
@@ -90,7 +105,7 @@ function Pedido() {
           <div className="w-full box-border mt-1 bg-gray-300 border-b border-gray-300 flex flex-row ">
             <div className="w-1/2 sm:w-full h-full p-1 ">
               <div className="text-xl text-gray-700 font-bold capitalize">
-                Total
+                Total <span className="text-sm italic lowercase text-gray-700"> ({totalItems} items) </span> 
               </div>
             </div>
 
