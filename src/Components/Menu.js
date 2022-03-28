@@ -179,7 +179,7 @@ function Menu({ pedido, setPedido }) {
 
                 <div className=" h-full w-1/4 sm:w-full  p-1 flex flex-col justify-between items-center">
                   <div className="text-xl font-bold text-gray-700">
-                    ${dish.precio}
+                    ${Number(dish.precio).toLocaleString("de-DE")}
                   </div>
                 </div>
               </div>
