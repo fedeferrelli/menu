@@ -136,7 +136,7 @@ function Menu({ pedido, setPedido }) {
 
         <div className="mb-4  px-2 py-3  sticky top-0 z-50 bg-gray-800">
           <input
-            className="shadow italic appearance-none border rounded w-full py-3 px-3 mt-1 text-gray-700 bg-gray-200 leading-tight focus:outline-none focus:border-violet-700 focus:shadow-none "
+            className="shadow italic appearance-none border rounded w-full py-3 px-3 text-gray-700 bg-gray-200 leading-tight focus:outline-none focus:border-violet-700 focus:shadow-none "
             id="buscar"
             type="text"
             placeholder="Buscar"
