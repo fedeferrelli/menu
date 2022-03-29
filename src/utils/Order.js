@@ -34,7 +34,7 @@ function Order({ dish, cantidad, setCantidad }) {
           <MdRemove />
         </button>
 
-        <div className="text-3xl text-center mx-1 bg-gray-100 w-1/4 text-gray-800 rounded-sm">
+        <div className="text-3xl text-center mx-1 bg-gray-100 w-auto px-4 text-gray-800 rounded-sm">
           {cantidad}
         </div>
 

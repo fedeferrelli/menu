@@ -23,6 +23,7 @@ function DetailedDish() {
 
   const AgregarPedido = () => {
     detallePlato.cantidad = cantidad;
+    detallePlato.id2 = Date.now();
 
     if (sessionStorage.pedido2 === undefined) {
       sessionStorage.setItem("pedido2", JSON.stringify([detallePlato]));
