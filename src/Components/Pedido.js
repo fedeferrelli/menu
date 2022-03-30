@@ -8,6 +8,9 @@ function Pedido() {
   const [totalItems, setTotalItems] = useState("");
   const [trigger, setTrigger] = useState(true);
   const [showDelete, setShowDelete] = useState(false);
+  const [platoToDelete, setPlatoToDelete] = useState('')
+  const [cantidadToDelete, setCantidadToDelete] = useState('')
+  const [idToDelete, setIdToDelete] = useState('')
 
   useEffect(() => {
     const getData = async () => {
@@ -49,15 +52,18 @@ function Pedido() {
 
   const navigate = useNavigate();
 
-  const cleanPedido = () => {
-    sessionStorage.clear();
-    setTrigger(!trigger);
-  };
 
-  const eliminarPlato = (id) =>{
-    if (pedido.length === 1){sessionStorage.clear()}
+  const DataToDelete = (plato, cantidad, id) =>{
+    setPlatoToDelete(plato);
+    setCantidadToDelete(cantidad);
+    setIdToDelete(id);
+    setShowDelete(true)
+  }
+
+  const eliminarPlato = () =>{
+    if (pedido.length === 1 || platoToDelete ==='Todo el pedido'){sessionStorage.clear()}
     else{
-    const dataNueva = pedido.filter((plato) => plato.id2 !== id)
+    const dataNueva = pedido.filter((plato) => plato.id2 !== idToDelete)
     sessionStorage.setItem("pedido2", JSON.stringify(dataNueva))}
     setTrigger(!trigger);
     setShowDelete(false)
@@ -85,7 +91,16 @@ function Pedido() {
 
         <div className="w-full h-screen bg-gray-800">
 
-
+{ showDelete && <div className="fixed flex w-full h-screen top-0 bottom-0 left-0 right-0 bg-gray-800/50 z-10">
+                <div className="w-3/4  bg-gray-300 rounded-md shadow-lg m-auto">
+                  <h1 className="text-xl text-gray-700 text-center p-6">Estás seguro que queres eliminar <span className="font-bold text-gray-700 capitalize"> {`${cantidadToDelete} ${platoToDelete} `} {/* {platoToDelete} <span className="lowercase">x</span> {cantidadToDelete} */}</span>?</h1>
+                
+                <div className="w-full my-3 flex flex-row justify-evenly">
+                <button className="w-2/5 rounded-sm p-3 bg-red-600 text-white"  onClick={()=>setShowDelete(false)}>Cancelar</button>
+                <button className="w-2/5 rounded-sm p-3 bg-green-600 text-white"  onClick={()=>eliminarPlato()}>Ok</button>
+                </div>
+                </div>
+              </div>}
 
 
           <h1 className="font-bold px-8 w-full text-center text-white text-xl py-6">
@@ -100,19 +115,10 @@ function Pedido() {
             <div key={Math.random()} className="w-full px-2  sm:w-1/5">
               <div className="w-full py-2 bg-gray-100 border-b border-gray-300 flex flex-row sm:flex-col overflow-hidden box-border">
                 
-              { showDelete && <div className="fixed flex w-full h-screen top-0 bottom-0 left-0 right-0 bg-gray-800/50 z-10">
-                <div className="w-3/4  bg-gray-300 rounded-md shadow-lg m-auto">
-                  <h1 className="text-xl text-gray-700 text-center p-6">Estás seguro que queres eliminar <span className="font-bold text-gray-700">{dish.plato} x {dish.cantidad}</span>?</h1>
-                
-                <div className="w-full my-3 flex flex-row justify-evenly">
-                <button className="w-2/5 rounded-sm p-3 bg-red-600 text-white"  onClick={()=>setShowDelete(false)}>Cancelar</button>
-                <button className="w-2/5 rounded-sm p-3 bg-green-600 text-white"  onClick={()=>eliminarPlato(dish.id2)}>Ok</button>
-                </div>
-                </div>
-              </div>}
+
                 
                 <div className="w-3/4 sm:w-full h-full p-1 flex flex-row items-center">
-                <div className="w-6 h-6 rounded-full text-center mr-1"  onClick={()=>setShowDelete(true)}><MdDeleteForever className="text-gray-700 w-full h-full"/></div>
+                <div className="w-6 h-6 rounded-full text-center mr-1"  onClick={()=>DataToDelete(dish.plato, dish.cantidad, dish.id2)}><MdDeleteForever className="text-gray-700 w-full h-full"/></div>
                   <div className="text-xl text-gray-700 font-bold capitalize">
                     {dish.plato}{" "}
                     <span className="text-sm italic lowercase text-gray-700">
@@ -158,7 +164,7 @@ function Pedido() {
             </div>
 
             <div
-              onClick={() => cleanPedido()}
+              onClick={()=>DataToDelete('Todo el pedido', '')}
               className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
             >
               <h1 className="m-auto text-right text-lg  w-full pr-2 ">

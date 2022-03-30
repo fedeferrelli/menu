@@ -19,7 +19,7 @@ function DetailedDish() {
     getData();
   }, []);
 
-  const { image, plato, precio, descripcion } = detallePlato || "";
+  const { image, plato, descripcion } = detallePlato || "";
 
   const AgregarPedido = () => {
     detallePlato.cantidad = cantidad;
