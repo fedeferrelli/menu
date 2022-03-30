@@ -69,12 +69,12 @@ function DetailedDish() {
 
 <div className="w-full h-6 fixed bottom-16 bg-gradient-to-t from-gray-200"></div>
 
-          <div className="w-full h-16 fixed bottom-0 justify-center flex flex-row">
+          <div className="w-full h-16 fixed  bottom-0 justify-center flex flex-row">
             <div
               onClick={() => navigate("/")}
               className="w-full  h-full text-center font-bold m-auto  bg-gray-800 text-yellow-500    flex"
             >
-              <h1 className="m-auto text-lg text-left w-full pl-2">
+              <h1 className="m-auto text-lg text-left w-full pl-3">
                 {" "}
                 Volver al menu
               </h1>
@@ -84,7 +84,7 @@ function DetailedDish() {
               onClick={() => AgregarPedido()}
               className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
             >
-              <h1 className="m-auto text-right text-lg  w-full pr-2 ">
+              <h1 className="m-auto text-right text-lg  w-full pr-3 ">
                 {" "}
                 Agregar al Pedido
               </h1>

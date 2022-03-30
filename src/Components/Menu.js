@@ -192,7 +192,7 @@ function Menu({ pedido, setPedido }) {
             onClick={() => navigate("/pedido")}
             className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
           >
-            <h1 className="m-auto text-right text-lg  w-full pr-2 ">
+            <h1 className="m-auto text-right text-lg  w-full pr-3 ">
               {" "}
               Ver Pedido ({cantidadPlatos})
             </h1>

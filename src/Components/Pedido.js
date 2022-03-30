@@ -138,14 +138,14 @@ function Pedido() {
           ))}
 <div className=" mx-2   ">
           <div className="w-full box-border mt-1 bg-gray-300 border-b border-gray-300 flex flex-row ">
-            <div className="w-1/2 sm:w-full h-full p-1 ">
+            <div className="w-1/2 sm:w-full h-full p-1">
               <div className="text-xl py-1 text-gray-700 font-bold capitalize">
                 Total <span className="text-sm italic lowercase text-gray-700"> ({totalItems} items) </span> 
               </div>
             </div>
 
-            <div className=" h-full w-1/2 p-1 ">
-              <div className="text-xl text-right font-bold text-gray-700">
+            <div className="w-1/2 p-1 flex">
+              <div className="m-auto w-full text-xl text-right font-bold text-gray-700">
                 ${total.toLocaleString("de-DE")}
               </div>
             </div>
@@ -157,7 +157,7 @@ function Pedido() {
               onClick={() => navigate("/")}
               className="w-full  h-full text-center font-bold m-auto  bg-gray-800 text-yellow-500    flex"
             >
-              <h1 className="m-auto text-lg text-left w-full pl-2">
+              <h1 className="m-auto text-lg text-left w-full pl-3">
                 {" "}
                 Volver al menu
               </h1>
@@ -167,7 +167,7 @@ function Pedido() {
               onClick={()=>DataToDelete('Todo el pedido', '')}
               className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
             >
-              <h1 className="m-auto text-right text-lg  w-full pr-2 ">
+              <h1 className="m-auto text-right text-lg  w-full pr-3 ">
                 {" "}
                 Limpiar Pedido
               </h1>
