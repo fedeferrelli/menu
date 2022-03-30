@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {MdDeleteForever} from 'react-icons/md'
 
 function Pedido() {
   const [pedido, setPedido] = useState();
@@ -111,7 +112,7 @@ function Pedido() {
               </div>}
                 
                 <div className="w-3/4 sm:w-full h-full p-1 flex flex-row items-center">
-                <div className="w-6 h-6 rounded-full border border-gray-800 text-center mr-1"  onClick={()=>setShowDelete(true)}>X</div>
+                <div className="w-6 h-6 rounded-full text-center mr-1"  onClick={()=>setShowDelete(true)}><MdDeleteForever className="text-gray-700 w-full h-full"/></div>
                   <div className="text-xl text-gray-700 font-bold capitalize">
                     {dish.plato}{" "}
                     <span className="text-sm italic lowercase text-gray-700">
