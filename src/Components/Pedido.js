@@ -54,8 +54,10 @@ function Pedido() {
   };
 
   const eliminarPlato = (id) =>{
+    if (pedido.length === 1){sessionStorage.clear()}
+    else{
     const dataNueva = pedido.filter((plato) => plato.id2 !== id)
-    sessionStorage.setItem("pedido2", JSON.stringify(dataNueva))
+    sessionStorage.setItem("pedido2", JSON.stringify(dataNueva))}
     setTrigger(!trigger);
     setShowDelete(false)
   }
@@ -102,8 +104,8 @@ function Pedido() {
                   <h1 className="text-xl text-gray-700 text-center p-6">Estás seguro que queres eliminar <span className="font-bold text-gray-700">{dish.plato} x {dish.cantidad}</span>?</h1>
                 
                 <div className="w-full my-3 flex flex-row justify-evenly">
-                <button className="w-2/5 rounded-sm p-3 bg-red-400 text-gray-800"  onClick={()=>setShowDelete(false)}>Cancelar</button>
-                <button className="w-2/5 rounded-sm p-3 bg-green-400 text-gray-800"  onClick={()=>eliminarPlato(dish.id2)}>Ok</button>
+                <button className="w-2/5 rounded-sm p-3 bg-red-600 text-white"  onClick={()=>setShowDelete(false)}>Cancelar</button>
+                <button className="w-2/5 rounded-sm p-3 bg-green-600 text-white"  onClick={()=>eliminarPlato(dish.id2)}>Ok</button>
                 </div>
                 </div>
               </div>}
