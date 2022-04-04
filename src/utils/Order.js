@@ -28,21 +28,21 @@ function Order({ dish, cantidad, setCantidad }) {
       </div> */}
       <div className="flex flex-row justify-center items-center w-full">
         <button
-          className="text-4xl bg-yellow-500 text-gray-800 rounded-l-full"
+          className="h-8 w-8 font-bold bg-yellow-500 text-gray-800 rounded-l-full"
           onClick={() => quitarCantidad()}
         >
-          <MdRemove />
+          <MdRemove className="w-full "  />
         </button>
 
-        <div className="text-3xl text-center mx-1 bg-gray-100 w-auto px-4 text-gray-800 rounded-sm">
+        <div className="text-2xl h-8 flex  text-center mx-1 bg-gray-100 w-auto px-4 text-gray-800 rounded-sm">
           {cantidad}
         </div>
 
         <button
-          className="text-4xl bg-yellow-500 text-gray-800 rounded-r-full"
+          className="h-8 w-8 font-bold bg-yellow-500 text-gray-800 rounded-r-full"
           onClick={() => agregarCantidad()}
         >
-          <MdAdd />
+          <MdAdd className="w-full" />
         </button>
       </div>
 

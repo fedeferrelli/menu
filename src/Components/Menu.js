@@ -124,13 +124,13 @@ function Menu({ pedido, setPedido }) {
 
   return (
     <>
-      <div className="bg-gray-800 min-h-screen pb-20">
+      <div className="bg-gray-800 min-h-screen pb-20 sm:pb-0">
         <h1 className="font-bold px-8 w-full text-center text-white text-xl py-6">
           {" "}
-          Acá podés ver{" "}
+          Este es{" "}
           <span className="text-2xl block uppercase text-yellow-500">
             {" "}
-            el menú
+            nuestro menú
           </span>
         </h1>
 
@@ -146,26 +146,26 @@ function Menu({ pedido, setPedido }) {
 
         <div className="flex flex-wrap justify-center w-full">
           {datos.map((dish, i) => (
-            <div key={Math.random()} className="w-full px-2  sm:w-1/5">
+            <div key={Math.random()} className="w-full px-2">
               <div className="sticky top-16">
                 {MostrarCategoria(dish.categoria, i)}
               </div>
 
               <div
-                className="w-full sm:w-full bg-gray-200 border-b border-gray-300 rounded-sm flex flex-row sm:flex-col overflow-hidden box-border"
+                className="w-full my-1 bg-gray-200 border-b cursor-pointer border-gray-300 rounded-sm flex flex-row overflow-hidden box-border"
                 onClick={() => irDetallePlato(dish)}
               >
                 <div className="p-1 ">
-                  <div className="bg-no-repeat max-h-[112px]  overflow-hidden bg-center ">
+                  <div className="bg-no-repeat max-h-[112px] sm:max-h-[96px] sm:max-w-[96px]  overflow-hidden bg-center ">
                     <img
                       src={dish.image}
-                      className="w-44 rounded-sm -z-10  "
+                      className="w-44 rounded-sm -z-10"
                       alt="plato_img"
                     />
                   </div>
                 </div>
 
-                <div className="w-3/4 sm:w-full h-full p-1">
+                <div className="w-3/4 h-full p-1">
                   <div className="text-xl text-gray-700 font-bold capitalize">
                     {dish.plato}
                   </div>
@@ -177,7 +177,7 @@ function Menu({ pedido, setPedido }) {
                   </div>
                 </div>
 
-                <div className=" h-full w-1/4 sm:w-full  p-1 flex flex-col justify-between items-center">
+                <div className=" h-full w-1/4 p-1 flex flex-col justify-between items-center">
                   <div className="text-xl font-bold text-gray-700 w-full text-right">
                     ${Number(dish.precio).toLocaleString("de-DE")}
                   </div>
@@ -187,12 +187,12 @@ function Menu({ pedido, setPedido }) {
           ))}
         </div>
 
-        <div className="w-full bg-gradient-to-t  h-16 fixed bottom-0 justify-center items-end text-gray-800 flex flex-row">
+        <div className="w-full h-16 fixed bottom-0 right-0 left-0 sm:w-1/2 sm:left-1/4   bg-gray-800 flex flex-row justify-end">
           <div
             onClick={() => navigate("/pedido")}
-            className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
+            className="h-full font-bold  text-yellow-500 flex px-3 cursor-pointer"
           >
-            <h1 className="m-auto text-right text-lg  w-full pr-3 ">
+            <h1 className="m-auto text-lg">
               {" "}
               Ver Pedido ({cantidadPlatos})
             </h1>

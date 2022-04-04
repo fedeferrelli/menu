@@ -42,8 +42,10 @@ function DetailedDish() {
     <>
       {detallePlato && (
         <div className="bg-gray-200 min-h-screen">
-          <div className="bg-no-repeat max-h-96 overflow-hidden bg-center sticky top-0">
-            <img src={image} className="w-full" alt="plato_img" />
+        
+         
+          <div className="bg-no-repeat max-h-96 sm:p-1   overflow-hidden bg-center">
+            <img src={image} className="w-full sm:rounded-sm sm:-mt-36" alt="plato_img" />
           </div>
 
           <div className="w-full px-1 py-3 flex flex-col justify-between items-center">
@@ -61,20 +63,22 @@ function DetailedDish() {
             setCantidad={setCantidad}
           />
 
-          <div className="w-full px-4 py-3 pb-24 flex flex-row justify-between items-center">
-            <div className="w-full text-lg  text-gray-500 text-center">
+
+
+          <div className="w-full px-4 sm:px-20 py-3 pb-24 flex flex-row justify-between items-center">
+            <div className="w-full text-lg leading-relaxed  text-gray-500 text-center">
               {descripcion}
             </div>
           </div>
 
-<div className="w-full h-6 fixed bottom-16 bg-gradient-to-t from-gray-200"></div>
+<div className="w-full h-6 fixed sm:sticky bottom-16 bg-gradient-to-t from-gray-200"></div>
 
-          <div className="w-full h-16 fixed  bottom-0 justify-center flex flex-row">
+          <div className="w-full h-16 fixed bottom-0 right-0 left-0 sm:w-1/2 sm:left-1/4 flex flex-row justify-between bg-gray-800">
             <div
               onClick={() => navigate("/")}
-              className="w-full  h-full text-center font-bold m-auto  bg-gray-800 text-yellow-500    flex"
+              className="h-full font-bold  text-yellow-500 flex px-3 cursor-pointer"
             >
-              <h1 className="m-auto text-lg text-left w-full pl-3">
+              <h1 className="m-auto text-lg">
                 {" "}
                 Volver al menu
               </h1>
@@ -82,9 +86,9 @@ function DetailedDish() {
 
             <div
               onClick={() => AgregarPedido()}
-              className="w-full h-full text-center font-bold bg-gray-800 text-yellow-500 flex"
+              className="h-full font-bold  text-yellow-500 flex px-3 cursor-pointer"
             >
-              <h1 className="m-auto text-right text-lg  w-full pr-3 ">
+              <h1 className="m-auto text-lg">
                 {" "}
                 Agregar al Pedido
               </h1>
