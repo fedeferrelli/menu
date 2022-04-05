@@ -144,7 +144,7 @@ function Menu({ pedido, setPedido }) {
           />
         </div>
 
-        <div className="flex flex-wrap justify-center w-full">
+        <div className="flex flex-wrap justify-center w-full sm:mb-16">
           {datos.map((dish, i) => (
             <div key={Math.random()} className="w-full px-2">
               <div className="sticky top-16">
