@@ -44,7 +44,7 @@ function DetailedDish() {
         <div className="bg-gray-200 min-h-screen">
         
          
-          <div className="bg-no-repeat max-h-96 sm:p-1   overflow-hidden bg-center">
+          <div className="bg-no-repeat max-h-96 overflow-hidden">
             <img src={image} className="w-full sm:rounded-sm sm:-mt-36" alt="plato_img" />
           </div>
 
