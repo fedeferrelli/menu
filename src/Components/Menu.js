@@ -6,6 +6,8 @@ import firebase from "../utils/Firebase/firebaseConfig";
 
 import _ from "lodash";
 
+import {Fade} from 'react-awesome-reveal'
+
 function Menu({ pedido, setPedido }) {
   const [datos, setDatos] = useState([]);
   const [filtro, setFiltro] = useState("");
@@ -123,7 +125,7 @@ function Menu({ pedido, setPedido }) {
   };
 
   return (
-    <>
+    <Fade duration="400">
       <div className="bg-gray-800 min-h-screen pb-20 sm:pb-0">
         <h1 className="font-bold px-8 w-full text-center text-white text-xl py-6">
           {" "}
@@ -199,7 +201,7 @@ function Menu({ pedido, setPedido }) {
           </div>
         </div>
       </div>
-    </>
+    </Fade>
   );
 }
 

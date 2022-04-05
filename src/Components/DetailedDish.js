@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Order from "./Order";
+import Order from "../utils/Order";
 
 import { useNavigate } from "react-router-dom";
+import {Fade} from 'react-awesome-reveal'
 
 function DetailedDish() {
   const [detallePlato, setDetallePlato] = useState(null);
@@ -39,7 +40,7 @@ function DetailedDish() {
   };
 
   return (
-    <>
+    <Fade duration="400">
       {detallePlato && (
         <div className="bg-gray-200 min-h-screen">
         
@@ -94,7 +95,7 @@ function DetailedDish() {
           </div>
         </div>
       )}
-    </>
+    </Fade>
   );
 }
 

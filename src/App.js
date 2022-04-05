@@ -1,28 +1,17 @@
 import { useState } from "react";
 import Menu from "./Components/Menu";
-import DetailedDish from "./utils/DetailedDish";
+import DetailedDish from "./Components/DetailedDish";
 import Pedido from "./Components/Pedido";
-import Home from "./Components/Home";
 
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-
-  const [detallePlato, setDetallePlato] = useState({})
-  const [pedido, setPedido] = useState([])
+  const [detallePlato, setDetallePlato] = useState({});
+  const [pedido, setPedido] = useState([]);
 
   return (
-
     <div className="flex flex-row bg-gray-800">
-        {/* <div className="sm:flex  sticky right-1/2">
-          <Home />
-        </div> */}
- <Router >
-     
-      
-
+      <Router>
         <div className="sm:w-1/2 w-full m-auto">
           <div className=" sm:m-auto">
             <Routes>
@@ -50,8 +39,7 @@ function App() {
             </Routes>
           </div>
         </div>
-    
-    </Router>
+      </Router>
     </div>
   );
 }

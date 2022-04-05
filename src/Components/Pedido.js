@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {MdDeleteForever} from 'react-icons/md'
+import {Fade} from 'react-awesome-reveal'
 
 function Pedido() {
   const [pedido, setPedido] = useState();
@@ -70,7 +71,7 @@ function Pedido() {
   }
 
   return (
-    <>
+    <Fade duration="400">
       {!pedido ? (
         <div className="w-full h-screen bg-gray-100 sm:bg-gray-800 sm:text-gray-200 text-lg leading-relaxed flex flex-row justify-center items-center">
           <div className="w-10/12 m-auto p-4 text-center text-lg">
@@ -94,7 +95,7 @@ function Pedido() {
         <div className="w-full h-screen bg-gray-800">
 
 { showDelete && <div className="fixed flex w-full h-screen top-0 bottom-0 left-0 right-0 bg-gray-800/50 z-10">
-                <div className="w-1/3  bg-gray-300 rounded-md shadow-lg m-auto">
+                <div className="w-4/5 sm:w-1/3  bg-gray-300 rounded-md shadow-lg m-auto">
                   <h1 className="text-xl text-gray-700 text-center p-6">Estás seguro que queres eliminar <span className="font-bold text-gray-700 capitalize"> {`${cantidadToDelete} ${platoToDelete} `} </span>?</h1>
                 
                 <div className="w-full my-3 flex flex-row justify-evenly">
@@ -177,7 +178,7 @@ function Pedido() {
           </div>
         </div>
       )}
-    </>
+    </Fade>
   );
 }
 
