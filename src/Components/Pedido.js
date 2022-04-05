@@ -72,19 +72,21 @@ function Pedido() {
   return (
     <>
       {!pedido ? (
-        <div className="w-full h-screen bg-gray-100 flex flex-row justify-center items-center">
+        <div className="w-full h-screen bg-gray-100 sm:bg-gray-800 sm:text-gray-200 text-lg leading-relaxed flex flex-row justify-center items-center">
           <div className="w-10/12 m-auto p-4 text-center text-lg">
             Todavía no agregaste ningún plato al pedido.{" "}
             <span className="block mt-4">Por favor hacelo desde el menú.</span>
           </div>
+          <div className="w-full h-16 fixed bottom-0 right-0 left-0 sm:w-1/2 sm:left-1/4 flex flex-row justify-between bg-gray-800">
           <div
             onClick={() => navigate("/")}
-            className="w-full h-14 fixed bottom-0 text-center font-bold bg-gray-800 text-yellow-500 flex"
+            className="h-full font-bold  text-yellow-500 flex px-3 cursor-pointer"
           >
-            <h1 className="m-auto text-left text-lg  w-full pl-2 ">
+            <h1 className="m-auto text-lg">
               {" "}
               Volver al Menu
             </h1>
+          </div>
           </div>
         </div>
       ) : (
@@ -92,7 +94,7 @@ function Pedido() {
         <div className="w-full h-screen bg-gray-800">
 
 { showDelete && <div className="fixed flex w-full h-screen top-0 bottom-0 left-0 right-0 bg-gray-800/50 z-10">
-                <div className="w-3/4  bg-gray-300 rounded-md shadow-lg m-auto">
+                <div className="w-1/3  bg-gray-300 rounded-md shadow-lg m-auto">
                   <h1 className="text-xl text-gray-700 text-center p-6">Estás seguro que queres eliminar <span className="font-bold text-gray-700 capitalize"> {`${cantidadToDelete} ${platoToDelete} `} </span>?</h1>
                 
                 <div className="w-full my-3 flex flex-row justify-evenly">
