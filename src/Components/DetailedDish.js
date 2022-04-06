@@ -40,7 +40,8 @@ function DetailedDish() {
   };
 
   return (
-    <Fade>
+    <div className="bg-gray-800">
+       <Fade >
       {detallePlato && (
         <div className="bg-gray-200 min-h-screen">
         
@@ -96,6 +97,7 @@ function DetailedDish() {
         </div>
       )}
     </Fade>
+    </div>
   );
 }
 
