@@ -41,8 +41,8 @@ function DetailedDish() {
 
   return (
     <div className="bg-gray-800">
-       <Fade >
-      {detallePlato && (
+      <Fade duration="400">
+      {detallePlato ? (
         <div className="bg-gray-200 min-h-screen">
         
          
@@ -95,8 +95,9 @@ function DetailedDish() {
             </div>
           </div>
         </div>
-      )}
-    </Fade>
+      ) :
+      <div className="w-full h-screen bg-red-600"></div>}
+   </Fade>
     </div>
   );
 }

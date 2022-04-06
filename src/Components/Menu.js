@@ -125,8 +125,10 @@ function Menu({ pedido, setPedido }) {
   };
 
   return (
-    <Fade>
+
+   
       <div className="bg-gray-800 min-h-screen pb-20 sm:pb-0">
+        
         <h1 className="font-bold px-8 w-full text-center text-white text-xl py-6">
           {" "}
           Este es{" "}
@@ -145,8 +147,9 @@ function Menu({ pedido, setPedido }) {
             onChange={(e) => setFiltro(e.target.value)}
           />
         </div>
-
+        <Fade duration="400">
         <div className="flex flex-wrap justify-center w-full sm:mb-16">
+        
           {datos.map((dish, i) => (
             <div key={Math.random()} className="w-full px-2">
               <div className="sticky top-16">
@@ -187,7 +190,9 @@ function Menu({ pedido, setPedido }) {
               </div>
             </div>
           ))}
+         
         </div>
+        </Fade>
 
         <div className="w-full h-16 fixed bottom-0 right-0 left-0 sm:w-1/2 sm:left-1/4   bg-gray-800 flex flex-row justify-end">
           <div
@@ -200,8 +205,9 @@ function Menu({ pedido, setPedido }) {
             </h1>
           </div>
         </div>
+        
       </div>
-    </Fade>
+    
   );
 }
 
