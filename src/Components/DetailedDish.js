@@ -40,7 +40,7 @@ function DetailedDish() {
   };
 
   return (
-    <Fade duration="400">
+    <Fade>
       {detallePlato && (
         <div className="bg-gray-200 min-h-screen">
         

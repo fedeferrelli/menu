@@ -71,7 +71,7 @@ function Pedido() {
   }
 
   return (
-    <Fade duration="400">
+    <Fade>
       {!pedido ? (
         <div className="w-full h-screen bg-gray-100 sm:bg-gray-800 sm:text-gray-200 text-lg leading-relaxed flex flex-row justify-center items-center">
           <div className="w-10/12 m-auto p-4 text-center text-lg">
