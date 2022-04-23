@@ -36,9 +36,4 @@ Podés acceder desde [acá](https://menu-fedeferrelli.vercel.app/)
 
 ## Screens
 
-
-![Screenshot](https://user-images.githubusercontent.com/73478943/164895818-d5a77d37-7c87-44c2-9dd0-033592c30733.jpg)
-
-![Screenshot1](https://user-images.githubusercontent.com/73478943/164896161-7a87d86a-aefc-4f73-81d1-903e1b16025e.jpg)
-
 ![ScreenShot](https://user-images.githubusercontent.com/73478943/164904151-b7ebfc3c-427c-4670-9e33-d5f4f671728b.jpg)
