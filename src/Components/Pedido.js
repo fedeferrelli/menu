@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {MdDeleteForever} from 'react-icons/md'
-import {Fade} from 'react-awesome-reveal'
+import {Fade} from 'react-awesome-reveal';
+import firebase from "../utils/Firebase/firebaseConfig";
 
 function Pedido() {
   const [pedido, setPedido] = useState();
@@ -51,6 +52,9 @@ function Pedido() {
     getData();
   }, [trigger]);
 
+ // pedido[0].fede="holanda";
+ // console.log(pedido[0].id)
+
   const navigate = useNavigate();
 
 
@@ -68,6 +72,13 @@ function Pedido() {
     sessionStorage.setItem("pedido2", JSON.stringify(dataNueva))}
     setTrigger(!trigger);
     setShowDelete(false)
+  }
+
+  const order = () => {
+    pedido.unshift({mesa:'4. Garibaldi'}, {nonmbre:'daniel'});
+    /* pedido.unshift({nonmbre:'daniel'}) */
+    firebase.db.collection("pedidos").add({pedido});
+    console.log(pedido)
   }
 
   return (
@@ -152,7 +163,11 @@ function Pedido() {
                 ${total.toLocaleString("de-DE")}
               </div>
             </div>
-          </div> </div>
+          </div> 
+          
+          <div className='w-11/12 m-auto text-center bg-yellow-500  mt-10 '><button className=" w-full h-full py-3 uppercase text-gray-800 font-extrabold" onClick={()=>order()}>Ordenar!</button></div>
+          
+          </div>
 
 
           <div className="w-full h-16 fixed bottom-0 right-0 left-0 sm:w-1/2 sm:left-1/4 flex flex-row justify-between bg-gray-800">
