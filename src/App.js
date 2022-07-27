@@ -3,6 +3,8 @@ import Menu from "./Components/Menu";
 import DetailedDish from "./Components/DetailedDish";
 import Pedido from "./Components/Pedido";
 
+import OrderView from "./Components/OrderView";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -36,7 +38,15 @@ function App() {
                 exact
                 element={<Pedido pedido={pedido} setPedido={setPedido} />}
               />
+           
+
+            <Route
+                path="/order_view"
+                exact
+                element={<OrderView/>}
+              />
             </Routes>
+
           </div>
         </div>
       </Router>

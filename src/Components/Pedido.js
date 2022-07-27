@@ -13,6 +13,10 @@ function Pedido() {
   const [platoToDelete, setPlatoToDelete] = useState('')
   const [cantidadToDelete, setCantidadToDelete] = useState('')
   const [idToDelete, setIdToDelete] = useState('')
+  const [toOrder, setToOrder] = useState(false)
+  const [showError, setShowError] = useState(false)
+  
+  const [name, setName] = useState('')
 
   useEffect(() => {
     const getData = async () => {
@@ -75,10 +79,18 @@ function Pedido() {
   }
 
   const order = () => {
-    pedido.unshift({mesa:'4. Garibaldi'}, {nonmbre:'daniel'});
-    /* pedido.unshift({nonmbre:'daniel'}) */
-    firebase.db.collection("pedidos").add({pedido});
+
+    if(name===''){setShowError(true)}
+    else{
+
+    let aOrdenar = [...pedido]  
+
+    aOrdenar.unshift({mesa:'4. Garibaldi'}, {nombre: name});
+    
+    firebase.db.collection("pedidos").add({aOrdenar});
+    setToOrder(false)
     console.log(pedido)
+  }
   }
 
   return (
@@ -114,6 +126,37 @@ function Pedido() {
                 <button className="w-2/5 rounded-sm p-3 bg-green-600 text-white"  onClick={()=>eliminarPlato()}>Ok</button>
                 </div>
                 </div>
+              </div>}
+
+              { toOrder && <div className="fixed  w-full h-screen top-0 bottom-0 left-0 right-0 bg-gray-800/80 z-10 flex flex-col justify-between">
+                <div className="w-11/12 h-1/2 sm:w-1/3  bg-gray-300 rounded-md shadow-lg m-auto flex flex-col justify-between gap-2 py-6">
+                  
+                  <h1 className="text-xl text-gray-700 text-center">Vas a ordenar . . . </h1>
+                  
+                  <section >
+                  {pedido.map((dish) => (
+                  <div key={Math.random()} className="w-full  capitalize text-center text-xl text-gray-800 font-bold">{dish.cantidad} {dish.plato} </div>))}</section>
+
+                <div className="w-11/12 mx-auto text-gray-700">
+              
+              <input
+                className="w-full bg-gray-100 text-gary-800 border border-gray-400 outline-none  focus:border-gray-800 focus:shadow-md ease-in-out duration-300  px-2 py-3"
+               
+                type="text"
+                placeholder="Tú nombre"
+                onChange={e=>{setName(e.target.value)}}
+                
+              />
+             {showError && <div className="text-sm text-red-500 italic pl-1">Por favor ingresá tu nombre</div>}
+            </div>
+                
+                 <div className='w-11/12 mx-auto text-center bg-yellow-500 '><button className=" w-full h-full py-3 uppercase text-gray-800 font-extrabold text-lg" onClick={()=>order()}>Ahora sí, ordenar!</button></div>
+                 
+                 
+                 <div className='w-auto mx-auto text-center '><button className=" w-full h-full uppercase text-red-600 text-lg" onClick={()=>order()}>Cancelar</button></div>
+               
+                </div>
+                
               </div>}
 
 
@@ -165,7 +208,7 @@ function Pedido() {
             </div>
           </div> 
           
-          <div className='w-11/12 m-auto text-center bg-yellow-500  mt-10 '><button className=" w-full h-full py-3 uppercase text-gray-800 font-extrabold" onClick={()=>order()}>Ordenar!</button></div>
+          <div className='w-full m-auto text-center bg-yellow-500  mt-10 '><button className=" w-full h-full py-3 uppercase text-gray-800 font-extrabold text-lg" onClick={()=>setToOrder(true)}>Ordenar!</button></div>
           
           </div>
 
@@ -191,8 +234,13 @@ function Pedido() {
               </h1>
             </div>
           </div>
+        
+
+
         </div>
       )}
+
+
     </Fade>
   );
 }
