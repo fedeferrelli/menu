@@ -15,7 +15,7 @@ function Pedido() {
   const [idToDelete, setIdToDelete] = useState('')
   const [toOrder, setToOrder] = useState(false)
   const [showError, setShowError] = useState(false)
-  
+  const [greetings, setGreetings] = useState(false)
   const [name, setName] = useState('')
 
   useEffect(() => {
@@ -82,15 +82,18 @@ function Pedido() {
 
     if(name===''){setShowError(true)}
     else{
-
+      setShowError(false)
     let aOrdenar = [...pedido]  
-
     aOrdenar.unshift({mesa:'4. Garibaldi'}, {nombre: name});
+    firebase.db.collection("pedidos").add({aOrdenar});    
+    setGreetings(true)
     
-    firebase.db.collection("pedidos").add({aOrdenar});
-    setToOrder(false)
-    console.log(pedido)
   }
+  };
+
+  const showOffGreetings = () =>{
+    setGreetings(false)
+    setToOrder(false)
   }
 
   return (
@@ -129,7 +132,8 @@ function Pedido() {
               </div>}
 
               { toOrder && <div className="fixed  w-full h-screen top-0 bottom-0 left-0 right-0 bg-gray-800/80 z-10 flex flex-col justify-between">
-                <div className="w-11/12 h-1/2 sm:w-1/3  bg-gray-300 rounded-md shadow-lg m-auto flex flex-col justify-between gap-2 py-6">
+             
+              { !greetings ? <div className="w-11/12 h-1/2 sm:w-1/3  bg-gray-300 rounded-md shadow-lg m-auto flex flex-col justify-between gap-2 py-6">
                   
                   <h1 className="text-xl text-gray-700 text-center">Vas a ordenar . . . </h1>
                   
@@ -153,9 +157,32 @@ function Pedido() {
                  <div className='w-11/12 mx-auto text-center bg-yellow-500 '><button className=" w-full h-full py-3 uppercase text-gray-800 font-extrabold text-lg" onClick={()=>order()}>Ahora sí, ordenar!</button></div>
                  
                  
-                 <div className='w-auto mx-auto text-center '><button className=" w-full h-full uppercase text-red-600 text-lg" onClick={()=>order()}>Cancelar</button></div>
-               
-                </div>
+                 <div className='w-auto mx-auto text-center '><button className=" w-full h-full uppercase text-red-600 text-md" onClick={()=>setToOrder(false)}>Volver al pedido</button></div>
+              
+                </div> :
+                
+                <div className="w-11/12 h-1/2 sm:w-1/3  bg-gray-300 rounded-md shadow-lg m-auto flex flex-col justify-between gap-2 py-6">
+
+                  <section className="flex flex-col gap-8">
+                  
+                  <h1 className="text-xl text-gray-700 text-center">Gracias </h1>
+
+                  <h1 className="text-2xl text-gray-800 font-bold text-center capitalize">{name} </h1>
+
+                  <h1 className="text-xl text-gray-700 text-center">Nos vemos el sábado! </h1>
+                  
+                  
+                  <h1 className="text-xl text-gray-700 text-center">&#128525; &#128525; &#128525; &#128525; </h1>
+                  </section>
+
+                  <div className='w-auto mx-auto text-center '><button className=" w-full h-full uppercase text-gray-800 text-md" onClick={()=>showOffGreetings()}>Volver al pedido</button></div>
+                  
+                  
+                  
+                  </div>
+                }} 
+
+                
                 
               </div>}
 
